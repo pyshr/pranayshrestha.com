@@ -1,0 +1,256 @@
+---
+import Base from '../layouts/Base.astro';
+
+const topics = [
+  {
+    title: 'Heterogeneous Transport in Porous Energy Materials',
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.5c-2.5-1.5-4-4-4-7a9 9 0 0 1 18 0c0 3-1.5 5.5-4 7"/><path d="M12 3v10"/><path d="m8 11 4 4 4-4"/><circle cx="8" cy="19" r="2"/><circle cx="16" cy="19" r="2"/><circle cx="12" cy="21" r="2"/></svg>`,
+    summary: 'Investigating how pore structure, wettability, and operating conditions govern multiphase transport across length scales in fuel cells, electrolyzers, and batteries.',
+    full: 'Porous materials underpin many electrochemical energy technologies, yet transport within them is inherently heterogeneous and difficult to predict. My work investigates how pore structure, wettability, and operating conditions govern multiphase transport across length scales, with a particular focus on fuel cells, electrolyzers, and batteries. By combining experiments and quantitative analysis, I aim to uncover transport mechanisms that directly impact device performance.',
+    papers: [
+      { title: 'Formation of Liquid Water Pathways in PEM Fuel Cells', venue: 'J. Electrochem. Soc., 2020' },
+      { title: 'Graded microporous layers for enhanced capillary-driven liquid water removal', venue: 'Adv. Mater. Interfaces, 2019' },
+      { title: 'Hydrophilic microporous layer coatings for PEM fuel cells', venue: 'J. Power Sources, 2018' },
+    ],
+  },
+  {
+    title: 'Operando Tomography & Advanced Characterization',
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20"/><path d="M17 2v20"/><path d="M2 7h20"/><path d="M2 17h20"/><circle cx="12" cy="12" r="3"/></svg>`,
+    summary: 'Developing operando X-ray and neutron tomography to directly visualize structure, transport, and degradation inside working energy devices.',
+    full: 'I develop and apply operando X-ray and neutron tomography techniques to directly visualize structure, transport, and degradation inside working energy devices. This includes multimodal and time-resolved imaging under realistic operating conditions, enabled by close collaboration with synchrotron and neutron facilities. These tools provide otherwise inaccessible insight into how devices function internally.',
+    papers: [
+      { title: 'Simultaneous multi-material operando tomography of electrochemical devices', venue: 'Sci. Adv., 2023' },
+      { title: 'Quantifying spatiotemporal heterogeneity via operando correlative neutron and X-ray tomography', venue: 'Adv. Funct. Mat., 2025' },
+      { title: 'Synchrotron X-ray radiography for measuring liquid water in PEM fuel cells', venue: 'J. Electrochem. Soc., 2016' },
+    ],
+  },
+  {
+    title: 'Microstructure-driven Performance & Failure',
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l4-5 3 4 4-6 3 3v16"/><circle cx="9" cy="7" r="1.5"/><circle cx="16" cy="4" r="1.5"/></svg>`,
+    summary: 'Connecting microstructural changes to measurable performance losses and failure modes across batteries, fuel cells, and electrolyzers.',
+    full: 'Electrochemical device performance and lifetime are tightly linked to evolving microstructure. My research connects microstructural changes, such as deformation and phase redistribution, to measurable performance losses and failure modes. This structure-to-function perspective enables targeted diagnosis of degradation mechanisms across batteries, fuel cells, and electrolyzers.',
+    papers: [
+      { title: 'Effect of microstructure on cycling behaviour of Li-In alloy anodes for solid-state batteries', venue: 'ACS Energy Lett., 2024' },
+      { title: 'Degradation Characteristics of Electrospun Gas Diffusion Layers', venue: 'ACS Appl. Mater. Interfaces, 2021' },
+      { title: 'Microporous layer degradation in PEM fuel cells', venue: 'J. Electrochem. Soc., 2018' },
+    ],
+  },
+  {
+    title: 'Data- & Physics-informed Material Design',
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 17l4-8 4 4 5-9"/><circle cx="7" cy="17" r="1.5"/><circle cx="11" cy="9" r="1.5"/><circle cx="15" cy="13" r="1.5"/><circle cx="20" cy="4" r="1.5"/></svg>`,
+    summary: 'Using experimental data and physical understanding to guide the design of porous layers, electrode architectures, and composite materials.',
+    full: 'Insights from operando characterization and transport physics can be translated into improved material architectures. I use experimental data and physical understanding to guide the design of porous layers, electrode architectures, and composite materials for enhanced performance and durability. This work bridges fundamental understanding with practical device-level innovation.',
+    papers: [
+      { title: 'Designing catalyst layer morphology for high performance water electrolysis', venue: 'Cell Rep. Phys. Sci., 2023' },
+      { title: 'Designing Tailored Gas Diffusion Layers with Pore Size Gradients via Electrospinning', venue: 'ACS Appl. Energy Mater., 2020' },
+      { title: 'Determining local transport properties via pore network modeling', venue: 'J. Power Sources, 2023' },
+    ],
+  },
+];
+---
+
+<Base title="Research">
+  <section class="research-hero">
+    <div class="container">
+      <h1>Research</h1>
+      <p class="research-lead">
+        My research is organized around four interconnected themes spanning transport physics, operando characterization, device performance, and material design.
+      </p>
+    </div>
+  </section>
+
+  <section class="research-grid-section fade-in">
+    <div class="container">
+      <div class="research-grid">
+        {topics.map((topic) => (
+          <details class="research-card">
+            <summary class="card-summary">
+              <span class="card-icon" set:html={topic.icon} />
+              <h3 class="card-title">{topic.title}</h3>
+              <p class="card-blurb">{topic.summary}</p>
+              <span class="card-expand mono">
+                Read more
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </summary>
+            <div class="card-full">
+              <p>{topic.full}</p>
+              {topic.papers.length > 0 && (
+                <div class="card-papers">
+                  <p class="card-papers-label mono">Selected publications</p>
+                  <ul>
+                    {topic.papers.map((paper) => (
+                      <li>
+                        <span class="paper-title">{paper.title}</span>
+                        <span class="paper-venue mono">{paper.venue}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="/publications" class="card-papers-link link-underline mono">View all publications &rarr;</a>
+                </div>
+              )}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .research-hero {
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .research-hero h1 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .research-lead {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .research-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: transform var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .research-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  .card-summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .card-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .card-summary::marker {
+    display: none;
+    content: '';
+  }
+
+  .card-icon {
+    display: inline-flex;
+    color: var(--color-accent);
+    margin-bottom: var(--space-xs);
+  }
+
+  .card-title {
+    font-size: var(--text-lg);
+    line-height: 1.3;
+  }
+
+  .card-blurb {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .card-expand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    margin-top: var(--space-xs);
+    transition: gap var(--duration-fast) var(--ease-out);
+  }
+
+  .card-expand svg {
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .research-card[open] .card-expand svg {
+    transform: rotate(180deg);
+  }
+
+  .research-card[open] .card-expand {
+    color: var(--color-accent-hover);
+  }
+
+  .card-full {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border-light);
+    margin-top: var(--space-md);
+  }
+
+  .card-full p {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.7;
+  }
+
+  .card-papers {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .card-papers-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .card-papers ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .card-papers li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .paper-title {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .paper-venue {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .card-papers-link {
+    font-size: var(--text-xs);
+  }
+
+  @media (max-width: 768px) {
+    .research-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

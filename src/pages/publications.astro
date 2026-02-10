@@ -1,0 +1,394 @@
+---
+import Base from '../layouts/Base.astro';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import yaml from 'js-yaml';
+
+// Load cached publications
+let publications = [];
+let stats = { h_index: 20, i10_index: 25, citations: 1207, total_papers: 31 };
+
+try {
+  const cachePath = resolve(process.cwd(), 'src/content/publications-cache.json');
+  const cache = JSON.parse(readFileSync(cachePath, 'utf-8'));
+  publications = cache.publications || [];
+} catch {
+  // Will show empty state
+}
+
+// Load YAML overlay
+let overlay = { featured: [], overrides: [], tag_rules: [], stats: {} };
+try {
+  const yamlPath = resolve(process.cwd(), 'src/content/publications.yaml');
+  overlay = yaml.load(readFileSync(yamlPath, 'utf-8')) as typeof overlay;
+  if (overlay.stats) stats = { ...stats, ...overlay.stats };
+} catch {
+  // Use defaults
+}
+
+// Build DOI lookup maps
+const featuredDois = new Set((overlay.featured || []).map((f: any) => f.doi?.toLowerCase()));
+const overrideMap = new Map((overlay.overrides || []).map((o: any) => [o.doi?.toLowerCase(), o]));
+const featuredNotes = new Map((overlay.featured || []).map((f: any) => [f.doi?.toLowerCase(), f]));
+
+// Apply tags from rules
+function autoTag(title: string): string[] {
+  const tags: string[] = [];
+  const lower = title.toLowerCase();
+  for (const rule of (overlay.tag_rules || [])) {
+    if ((rule as any).match.some((m: string) => lower.includes(m.toLowerCase()))) {
+      tags.push((rule as any).tag);
+    }
+  }
+  return tags;
+}
+
+// Enrich publications
+const enriched = publications.map((pub: any) => {
+  const doiKey = pub.doi?.toLowerCase();
+  const override = doiKey ? overrideMap.get(doiKey) : null;
+  const featured = doiKey ? featuredDois.has(doiKey) : false;
+  const featuredInfo = doiKey ? featuredNotes.get(doiKey) : null;
+
+  let tags = override?.tags || featuredInfo?.tags || autoTag(pub.title);
+
+  return {
+    ...pub,
+    tags,
+    featured,
+    note: override?.note || featuredInfo?.note || null,
+  };
+});
+
+const featuredPubs = enriched.filter((p: any) => p.featured);
+const allTags = [...new Set(enriched.flatMap((p: any) => p.tags))].sort();
+
+// Bold author name helper
+function boldAuthor(authors: string[]): string {
+  return authors.map(a =>
+    a.includes('Shrestha') ? `<strong>${a}</strong>` : a
+  ).join(', ');
+}
+---
+
+<Base title="Publications">
+  <section class="pub-hero">
+    <div class="container content">
+      <h1>Publications</h1>
+      <div class="pub-stats">
+        <div class="stat-item">
+          <span class="stat-value mono">{stats.total_papers}</span>
+          <span class="stat-label">Papers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-value mono">{stats.h_index}</span>
+          <span class="stat-label">h-index</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-value mono">{stats.citations.toLocaleString()}</span>
+          <span class="stat-label">Citations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {featuredPubs.length > 0 && (
+    <section class="pub-featured fade-in">
+      <div class="container content">
+        <h2 class="section-label">Featured</h2>
+        {featuredPubs.map((pub: any) => (
+          <div class="featured-card">
+            <span class="featured-badge mono">Featured</span>
+            <h3 class="featured-title">{pub.title}</h3>
+            <p class="featured-meta mono">
+              {pub.venue && <span>{pub.venue}</span>}
+              {pub.year && <span> &middot; {pub.year}</span>}
+            </p>
+            <p class="featured-authors" set:html={boldAuthor(pub.authors)} />
+            {pub.note && <p class="featured-note">{pub.note}</p>}
+            {pub.doi && (
+              <a href={`https://doi.org/${pub.doi}`} class="featured-link link-underline" target="_blank" rel="noopener noreferrer">
+                View paper &rarr;
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="pub-list-section fade-in">
+    <div class="container content">
+      <h2 class="section-label">All Publications</h2>
+
+      {allTags.length > 0 && (
+        <div class="filter-chips" id="filter-chips">
+          <button class="chip active" data-filter="all">All</button>
+          {allTags.map((tag: string) => (
+            <button class="chip" data-filter={tag}>{tag}</button>
+          ))}
+        </div>
+      )}
+
+      <ol class="pub-list" id="pub-list" reversed>
+        {enriched.map((pub: any, i: number) => (
+          <li class="pub-item" data-tags={JSON.stringify(pub.tags)} data-year={pub.year}>
+            <div class="pub-year mono">{pub.year}</div>
+            <div class="pub-body">
+              <p class="pub-title">{pub.title}</p>
+              <p class="pub-authors" set:html={boldAuthor(pub.authors)} />
+              <p class="pub-venue mono">
+                {pub.venue}
+                {pub.citations > 0 && <span> &middot; {pub.citations} citations</span>}
+              </p>
+              {pub.doi && (
+                <a href={`https://doi.org/${pub.doi}`} class="pub-doi link-underline mono" target="_blank" rel="noopener noreferrer">
+                  DOI &nearr;
+                </a>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      {publications.length === 0 && (
+        <p class="pub-empty">Publications data is loading. Check back soon, or visit my <a href="https://scholar.google.ca/citations?user=_jviuGsAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar profile</a>.</p>
+      )}
+    </div>
+  </section>
+</Base>
+
+<script>
+  const chips = document.querySelectorAll('.chip');
+  const items = document.querySelectorAll('.pub-item');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+
+      const filter = chip.getAttribute('data-filter');
+
+      items.forEach(item => {
+        if (filter === 'all') {
+          (item as HTMLElement).style.display = '';
+          return;
+        }
+        const tags = JSON.parse(item.getAttribute('data-tags') || '[]');
+        (item as HTMLElement).style.display = tags.includes(filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .pub-hero {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-lg);
+  }
+
+  .pub-hero h1 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .pub-stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .stat-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 2rem;
+    background: var(--color-border);
+  }
+
+  /* Section labels */
+  .section-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Featured */
+  .pub-featured {
+    padding-bottom: var(--space-lg);
+  }
+
+  .featured-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-light);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .featured-badge {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  .featured-title {
+    font-size: var(--text-lg);
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    line-height: 1.4;
+  }
+
+  .featured-meta {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .featured-authors {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .featured-note {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    font-style: italic;
+    margin-bottom: var(--space-sm);
+  }
+
+  .featured-link {
+    font-size: var(--text-sm);
+  }
+
+  /* Filters */
+  .filter-chips {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-xl);
+  }
+
+  .chip {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .chip:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .chip.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Publication list */
+  .pub-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pub-item {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: var(--space-md);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .pub-item:first-child {
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .pub-year {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    padding-top: 2px;
+  }
+
+  .pub-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.4;
+    margin-bottom: var(--space-xs);
+  }
+
+  .pub-authors {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: var(--space-xs);
+  }
+
+  .pub-authors :global(strong) {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .pub-venue {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+    margin-bottom: var(--space-xs);
+  }
+
+  .pub-doi {
+    font-size: var(--text-xs);
+  }
+
+  .pub-empty {
+    color: var(--color-text-muted);
+    padding: var(--space-2xl) 0;
+  }
+
+  @media (max-width: 640px) {
+    .pub-item {
+      grid-template-columns: 1fr;
+      gap: var(--space-xs);
+    }
+
+    .pub-stats {
+      gap: var(--space-md);
+    }
+  }
+</style>

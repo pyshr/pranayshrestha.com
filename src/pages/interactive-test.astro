@@ -1,0 +1,455 @@
+---
+import Base from '../layouts/Base.astro';
+import ScrollExplorer from '../components/ScrollExplorer.tsx';
+---
+
+<Base title="Interactive Test">
+  <!-- Hero with cell on right -->
+  <section class="hero-test">
+    <div class="container hero-layout">
+      <div class="hero-text">
+        <p class="hero-affiliation mono">University of Oxford</p>
+        <h1 class="hero-name">Pranay Shrestha</h1>
+        <p class="hero-tagline">
+          Revealing how microstructural heterogeneity governs transport, performance, and failure in electrochemical energy devices.
+        </p>
+        <div class="hero-actions">
+          <a href="/research" class="btn btn-primary">View Research</a>
+          <a href="/publications" class="btn btn-outline">Publications</a>
+        </div>
+      </div>
+      <div class="hero-cell" id="hero-cell">
+        <img src="/images/cell-web.png" alt="Fuel cell" role="button" tabindex="0" style="cursor:pointer;" />
+        <button class="cell-arrow" id="cell-arrow-btn" aria-label="Scroll to explore imaging" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlight cards -->
+  <section class="highlights-test fade-in">
+    <div class="container">
+      <div class="highlights-grid">
+        <a href="/publications" class="highlight-card highlight-link">
+          <span class="highlight-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </span>
+          <p class="highlight-stat">31+</p>
+          <p class="highlight-label">Journal publications</p>
+          <p class="highlight-detail">Including <em>Science Advances</em>, <em>ACS Energy Letters</em></p>
+        </a>
+        <a href="/research" class="highlight-card highlight-link">
+          <span class="highlight-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M1 12h4M19 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </span>
+          <p class="highlight-stat">Pioneered</p>
+          <p class="highlight-label">Dual-modality operando tomography</p>
+          <p class="highlight-detail">Simultaneous neutron &amp; X-ray imaging of operating devices</p>
+        </a>
+        <a href="/about" class="highlight-card highlight-link">
+          <span class="highlight-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </span>
+          <p class="highlight-stat">14</p>
+          <p class="highlight-label">International collaborations</p>
+          <p class="highlight-detail">Across synchrotrons, universities, and industry</p>
+        </a>
+        <a href="/about" class="highlight-card highlight-link">
+          <span class="highlight-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+          </span>
+          <p class="highlight-stat">&gt;$686K</p>
+          <p class="highlight-label">Competitive funding</p>
+          <p class="highlight-detail">Including Marie Curie, Vanier, and international grants</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll arrow prompt -->
+  <div class="scroll-arrow-wrap" id="scroll-arrow">
+    <button class="scroll-arrow-btn" aria-label="Scroll to explore imaging" type="button">
+      <span class="scroll-arrow-text mono">Explore imaging</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+  </div>
+
+  <!-- Interactive scroll section (below cards) -->
+  <section class="explorer-section" id="explorer">
+    <ScrollExplorer client:visible />
+  </section>
+</Base>
+
+<script>
+  const arrow = document.getElementById('scroll-arrow');
+  const cellArrow = document.getElementById('cell-arrow-btn');
+  const heroCell = document.getElementById('hero-cell');
+  const explorer = document.getElementById('explorer');
+
+  // All interactive elements scroll to the explorer section
+  const scrollToExplorer = () => {
+    explorer?.scrollIntoView({ behavior: 'smooth' });
+  };
+  arrow?.addEventListener('click', scrollToExplorer);
+  cellArrow?.addEventListener('click', scrollToExplorer);
+  heroCell?.querySelector('img')?.addEventListener('click', scrollToExplorer);
+  heroCell?.querySelector('img')?.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToExplorer(); }
+  });
+
+  // Hide "Explore imaging" arrow once user scrolls into explorer
+  const obs = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        arrow?.classList.add('hidden');
+      } else {
+        arrow?.classList.remove('hidden');
+      }
+    },
+    { threshold: 0.1 }
+  );
+  if (explorer) obs.observe(explorer);
+</script>
+
+<style>
+  /* Hero */
+  .hero-test {
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .hero-layout {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+
+  .hero-text {
+    flex: 1;
+    max-width: 40rem;
+  }
+
+  .hero-affiliation {
+    color: var(--color-highlight);
+    margin-bottom: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+
+  .hero-name { margin-bottom: var(--space-lg); }
+
+  .hero-tagline {
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    max-width: 48ch;
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .hero-cell {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero-cell img {
+    height: 260px;
+    width: auto;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.08));
+  }
+
+  .cell-arrow {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-text-light);
+    opacity: 0.4;
+    animation: cell-arrow-bounce 2.5s ease-in-out infinite;
+    transition: color 200ms ease;
+  }
+
+  .cell-arrow:hover {
+    color: var(--color-accent);
+    opacity: 0.7;
+  }
+
+  @keyframes cell-arrow-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(4px); opacity: 0.6; }
+  }
+
+  .btn {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    display: inline-block;
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+  .btn-primary { background-color: var(--color-accent); color: #fff; }
+  .btn-primary:hover { background-color: var(--color-accent-hover); color: #fff; }
+  .btn-outline { border: 1.5px solid var(--color-highlight); color: var(--color-highlight); background: transparent; }
+  .btn-outline:hover { background-color: var(--color-highlight); color: #fff; }
+
+  /* Highlights */
+  .highlights-test { padding-bottom: var(--space-md); }
+  .highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }
+  .highlight-card { padding: var(--space-lg); background: var(--color-bg-card); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out); }
+  .highlight-link { text-decoration: none; color: inherit; display: block; }
+  .highlight-link:hover { color: inherit; }
+  .highlight-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .highlight-icon { display: inline-flex; color: var(--color-accent); margin-bottom: var(--space-md); }
+  .highlight-stat { font-family: var(--font-heading); font-weight: 700; font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-xs); }
+  .highlight-label { font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 500; color: var(--color-text); margin-bottom: var(--space-xs); }
+  .highlight-detail { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; }
+
+  /* Scroll arrow */
+  .scroll-arrow-wrap {
+    display: flex;
+    justify-content: center;
+    padding: var(--space-sm) 0 var(--space-md);
+    transition: opacity 400ms ease;
+  }
+
+  .scroll-arrow-wrap.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .scroll-arrow-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-light);
+    transition: color 200ms ease;
+  }
+
+  .scroll-arrow-btn:hover {
+    color: var(--color-accent);
+  }
+
+  .scroll-arrow-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+  }
+
+  .scroll-arrow-btn svg {
+    animation: arrow-bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes arrow-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+
+  /* Explorer section */
+  .explorer-section {
+    position: relative;
+  }
+
+  /* ScrollExplorer component styles */
+  :global(.se-container) {
+    position: relative;
+  }
+
+  :global(.se-sticky) {
+    position: sticky;
+    top: var(--nav-height);
+    height: calc(100vh - var(--nav-height));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: -3rem;
+  }
+
+  :global(.se-viewport) {
+    position: relative;
+    width: 480px;
+    height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.se-layer) {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    will-change: transform, opacity;
+    pointer-events: none;
+    transition: none;
+  }
+
+  :global(.se-cell) {
+    max-height: 340px;
+    width: auto;
+  }
+
+  :global(.se-xray-top),
+  :global(.se-xray-bot) {
+    max-width: 380px;
+  }
+
+  :global(.se-neutron) {
+    max-width: 420px;
+  }
+
+  /* Beam glows */
+  :global(.se-beam) {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    will-change: opacity;
+  }
+
+  :global(.se-beam-xray) {
+    background: radial-gradient(ellipse at 50% 40%, rgba(218, 185, 80, 0.2) 0%, transparent 65%);
+  }
+
+  :global(.se-beam-neutron) {
+    background: radial-gradient(ellipse at 50% 50%, rgba(70, 160, 200, 0.15) 0%, transparent 65%);
+  }
+
+  /* Buried interfaces label (below viewport) */
+  :global(.se-buried-label) {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
+    will-change: opacity;
+    pointer-events: none;
+  }
+
+  :global(.se-buried-text) {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  :global(.se-buried-line) {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  /* Stage indicators */
+  :global(.se-indicators) {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  :global(.se-indicator) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.3;
+    transition: opacity 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  :global(.se-indicator.active) {
+    opacity: 1;
+  }
+
+  :global(.se-dot) {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-text-muted);
+    transition: background 500ms ease;
+  }
+
+  :global(.se-indicator.active .se-dot) {
+    background: var(--color-accent);
+  }
+
+  :global(.se-indicator-label) {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--color-text-muted);
+    letter-spacing: -0.01em;
+    transition: color 500ms ease;
+  }
+
+  :global(.se-indicator.active .se-indicator-label) {
+    color: var(--color-text);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .hero-layout {
+      flex-direction: column;
+      gap: var(--space-xl);
+      align-items: flex-start;
+    }
+
+    .hero-cell img {
+      height: 180px;
+      width: auto;
+    }
+
+    :global(.se-viewport) {
+      width: 320px;
+      height: 360px;
+    }
+
+    :global(.se-xray-top),
+    :global(.se-xray-bot) {
+      max-width: 280px;
+    }
+
+    :global(.se-neutron) {
+      max-width: 300px;
+    }
+
+    :global(.se-indicators) { gap: 0.8rem; }
+    :global(.se-indicator-label) { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .highlights-grid { grid-template-columns: 1fr; }
+
+    .hero-cell img { height: 150px; width: auto; }
+
+    :global(.se-viewport) {
+      width: 280px;
+      height: 320px;
+    }
+
+    :global(.se-xray-top),
+    :global(.se-xray-bot) {
+      max-width: 240px;
+    }
+
+    :global(.se-neutron) {
+      max-width: 260px;
+    }
+  }
+</style>

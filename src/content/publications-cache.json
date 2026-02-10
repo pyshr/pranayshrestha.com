@@ -1,0 +1,637 @@
+{
+  "fetchedAt": "2026-02-07T00:00:00.000Z",
+  "count": 32,
+  "publications": [
+    {
+      "id": "manual-31",
+      "title": "Quantifying spatiotemporal heterogeneity in electrochemical devices via operando correlative neutron and X-ray tomography",
+      "year": 2025,
+      "venue": "Adv. Funct. Mat.",
+      "doi": "10.1002/adfm.202515427",
+      "authors": [
+        "Shrestha, P.",
+        "LaManna, J. M.",
+        "Fahy, K. F.",
+        "Kim, P.",
+        "Lee, CH.",
+        "Lee, J. K.",
+        "Baltic, E.",
+        "Jacobson, D. L.",
+        "Hussey, D. S.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-30",
+      "title": "The Role of Operating Temperature on Pore-scale Gas Transport in Polymer Electrolyte Membrane Electrolyzers",
+      "year": 2025,
+      "venue": "Adv. Sci.",
+      "doi": "10.1002/advs.202507606",
+      "authors": [
+        "Ham, C. T.",
+        "Shrestha, P.",
+        "Kober, L.",
+        "Gasilov, S.",
+        "Webb, M. A.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-29",
+      "title": "Biomimetic auxiliary channels enhance oxygen delivery and water removal in polymer electrolyte membrane fuel cells",
+      "year": 2025,
+      "venue": "Appl. Energy",
+      "doi": "10.1016/j.apenergy.2025.125760",
+      "authors": [
+        "Chadwick, E. A.",
+        "Shrestha, P.",
+        "Parmar, H.",
+        "Bazylak, A.",
+        "Schulz, V. P."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-28",
+      "title": "Effect of microstructure on the cycling behaviour of Li-In alloy anodes for solid-state batteries",
+      "year": 2024,
+      "venue": "ACS Energy Lett.",
+      "doi": "10.1021/acsenergylett.3c02274",
+      "authors": [
+        "Aspinall, J.",
+        "Guo, H.",
+        "Chart, Y.",
+        "Shrestha, P.",
+        "Pasta, M."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-27",
+      "title": "Simultaneous multi-material operando tomography of electrochemical devices",
+      "year": 2023,
+      "venue": "Sci. Adv.",
+      "doi": "10.1126/sciadv.adg8634",
+      "authors": [
+        "Shrestha, P.",
+        "LaManna, J. M.",
+        "Fahy, K. F.",
+        "Kim, P.",
+        "Lee, CH.",
+        "Lee, J. K.",
+        "Baltic, E.",
+        "Jacobson, D. L.",
+        "Hussey, D. S.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-26",
+      "title": "Pursuit of next-generation electrochemical energy devices",
+      "year": 2023,
+      "venue": "Electrochim. Acta",
+      "doi": "10.1016/j.electacta.2023.142810",
+      "authors": [
+        "Shrestha, P.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-25",
+      "title": "Determining local transport properties of gas diffusion layer land-channel regions via pore network modeling",
+      "year": 2023,
+      "venue": "J. Power Sources",
+      "doi": "10.1016/j.jpowsour.2023.232770",
+      "authors": [
+        "Guan, R.",
+        "Shrestha, P.",
+        "Lee, J. K.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-24",
+      "title": "Designing catalyst layer morphology for high performance water electrolysis using synchrotron X-ray nanotomography",
+      "year": 2023,
+      "venue": "Cell Rep. Phys. Sci.",
+      "doi": "10.1016/j.xcrp.2022.101232",
+      "authors": [
+        "Lee, J. K.",
+        "Kim, P.",
+        "Krause, K.",
+        "Shrestha, P.",
+        "Balakrishnan, M.",
+        "Fahy, K.",
+        "Fatih, K.",
+        "Shaigan, N.",
+        "Ge, M.",
+        "Lee, W.-K.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-23",
+      "title": "Electrolyte Layer Gas Triggers Cathode Potential Instability in CO2 Electrolyzers",
+      "year": 2022,
+      "venue": "J. Power Sources",
+      "doi": "10.1016/j.jpowsour.2021.230879",
+      "authors": [
+        "Krause, K.",
+        "Lee, J. K.",
+        "Lee, CH.",
+        "Shafaque, H.",
+        "Kim, P.",
+        "Fahy, K. F.",
+        "Shrestha, P.",
+        "LaManna, J. M.",
+        "Baltic, E.",
+        "Jacobson, D. L.",
+        "Hussey, D. S.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-22",
+      "title": "Temperature enhances the ohmic and mass transport behaviour in membrane electrode assembly carbon dioxide electrolyzers",
+      "year": 2021,
+      "venue": "Energy Convers. Manage.",
+      "doi": "10.1016/j.enconman.2021.114302",
+      "authors": [
+        "Shafaque, H. W.",
+        "Lee, J. K.",
+        "Krause, K.",
+        "Lee, CH.",
+        "Fahy, K. F.",
+        "Shrestha, P.",
+        "Balakrishnan, M.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-21",
+      "title": "Gas evolution drives unstable cathode potential in alkaline flow cells for CO2 electroreduction",
+      "year": 2021,
+      "venue": "ACS Sustainable Chem. Eng.",
+      "doi": "10.1021/acssuschemeng.0c08993",
+      "authors": [
+        "Krause, K.",
+        "Lee, CH.",
+        "Lee, J. K.",
+        "Fahy, K. F.",
+        "Shafaque, H. W.",
+        "Kim, P. J.",
+        "Shrestha, P.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-20",
+      "title": "Tailoring catalyst layer interface with titanium mesh porous transport layers",
+      "year": 2021,
+      "venue": "Electrochim. Acta",
+      "doi": "10.1016/j.electacta.2021.137879",
+      "authors": [
+        "Kim, P.",
+        "Lee, J. K.",
+        "Lee, CH.",
+        "Fahy, K. F.",
+        "Shrestha, P.",
+        "Krause, K.",
+        "Shafaque, H. W.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-19",
+      "title": "Degradation Characteristics of Electrospun Gas Diffusion Layers for Polymer Electrolyte Membrane Fuel Cells",
+      "year": 2021,
+      "venue": "ACS Appl. Mater. Interfaces",
+      "doi": "10.1021/acsami.0c15324",
+      "authors": [
+        "Balakrishnan, M.",
+        "Shrestha, P.",
+        "Lee, CH.",
+        "Ge, N.",
+        "Fahy, K. F.",
+        "Messerschmidt, M.",
+        "Scholta, J.",
+        "Eifert, L.",
+        "Maibach, J.",
+        "Zeis, R.",
+        "Hatton, B. D.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-18",
+      "title": "Formation of Liquid Water Pathways in PEM Fuel Cells: a 3-D Pore-scale Perspective",
+      "year": 2020,
+      "venue": "J. Electrochem. Soc.",
+      "doi": "10.1149/1945-7111/ab7a0b",
+      "authors": [
+        "Shrestha, P.",
+        "Lee, CH.",
+        "Fahy, K. F.",
+        "Balakrishnan, M.",
+        "Ge, N.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-17",
+      "title": "Designing Tailored Gas Diffusion Layers with Pore Size Gradients via Electrospinning for Polymer Electrolyte Membrane Fuel Cells",
+      "year": 2020,
+      "venue": "ACS Appl. Energy Mater.",
+      "doi": "10.1021/acsaem.9b02371",
+      "authors": [
+        "Balakrishnan, M.",
+        "Shrestha, P.",
+        "Ge, N.",
+        "Lee, CH.",
+        "Fahy, K. F.",
+        "Zeis, R.",
+        "Schulz, V. P.",
+        "Hatton, B.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-16",
+      "title": "Resolving the gas diffusion layer substrate land and channel region contributions to the oxygen transport resistance of a partially-saturated substrate",
+      "year": 2019,
+      "venue": "Electrochim. Acta",
+      "doi": "10.1016/j.electacta.2019.135001",
+      "authors": [
+        "Ge, N.",
+        "Shrestha, P.",
+        "Balakrishnan, M.",
+        "Ouellette, D.",
+        "Wong, A. K. C.",
+        "Liu, H.",
+        "Lee, CH.",
+        "Lee, J. K.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-15",
+      "title": "Detecting cathode corrosion in polymer electrolyte membrane fuel cells in dead-ended anode mode via alternating current impedance",
+      "year": 2019,
+      "venue": "J. Power Sources",
+      "doi": "10.1016/j.jpowsour.2019.227089",
+      "authors": [
+        "Ge, N.",
+        "Chevalier, S.",
+        "Muirhead, D.",
+        "Banerjee, R.",
+        "Lee, J.",
+        "Liu, H.",
+        "Shrestha, P.",
+        "Fahy, K.",
+        "Lee, CH.",
+        "Aoki, T.",
+        "Tabuchi, Y.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-14",
+      "title": "Graded microporous layers for enhanced capillary-driven liquid water removal in polymer electrolyte membrane fuel cells",
+      "year": 2019,
+      "venue": "Adv. Mater. Interfaces",
+      "doi": "10.1002/admi.201901157",
+      "authors": [
+        "Shrestha, P.",
+        "Ouellette, D.",
+        "Lee, J.",
+        "Wong, A. K. C.",
+        "Muirhead, D.",
+        "Liu, H.",
+        "Banerjee, R.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-13",
+      "title": "Membrane dehydration with increasing current density at high inlet gas relative humidity in polymer electrolyte membrane fuel cells",
+      "year": 2019,
+      "venue": "J. Power Sources",
+      "doi": "10.1016/j.jpowsour.2019.03.001",
+      "authors": [
+        "Ge, N.",
+        "Banerjee, R.",
+        "Muirhead, D.",
+        "Lee, J.",
+        "Liu, H.",
+        "Shrestha, P.",
+        "Wong, A. K.",
+        "Jankovic, J.",
+        "Tam, M.",
+        "Susac, D.",
+        "Stumper, J.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-12",
+      "title": "Polytetrafluoroethylene content in standalone microporous layers: Tradeoff between membrane hydration and mass transport losses in polymer electrolyte membrane fuel cells",
+      "year": 2019,
+      "venue": "Appl. Energy",
+      "doi": "10.1016/j.apenergy.2019.02.037",
+      "authors": [
+        "Wong, A. K. C.",
+        "Ge, N.",
+        "Shrestha, P.",
+        "Liu, H.",
+        "Fahy, K.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-11",
+      "title": "Hydrophilic microporous layer coatings for polymer electrolyte membrane fuel cells operating without anode humidification",
+      "year": 2018,
+      "venue": "J. Power Sources",
+      "doi": "10.1016/j.jpowsour.2018.08.062",
+      "authors": [
+        "Shrestha, P.",
+        "Banerjee, R.",
+        "Lee, J.",
+        "Ge, N.",
+        "Muirhead, D.",
+        "Liu, H.",
+        "Wong, A. K.",
+        "Ouellette, D.",
+        "Zhao, B.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-10",
+      "title": "Liquid water saturation and oxygen transport resistance in polymer electrolyte membrane fuel cell gas diffusion layers",
+      "year": 2018,
+      "venue": "Electrochim. Acta",
+      "doi": "10.1016/j.electacta.2018.04.050",
+      "authors": [
+        "Muirhead, D.",
+        "Banerjee, R.",
+        "George, M. G.",
+        "Ge, N.",
+        "Shrestha, P.",
+        "Liu, H.",
+        "Lee, J.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-9",
+      "title": "Identifying in operando changes in membrane hydration in polymer electrolyte membrane fuel cells using synchrotron X-ray radiography",
+      "year": 2018,
+      "venue": "Int. J. Hydrog. Energy",
+      "doi": "10.1016/j.ijhydene.2018.03.224",
+      "authors": [
+        "Banerjee, R.",
+        "Ge, N.",
+        "Han, C.",
+        "Lee, J.",
+        "George, M. G.",
+        "Liu, H.",
+        "Muirhead, D.",
+        "Shrestha, P.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-8",
+      "title": "Microporous layer degradation in polymer electrolyte membrane fuel cells",
+      "year": 2018,
+      "venue": "J. Electrochem. Soc.",
+      "doi": "10.1149/2.0291806jes",
+      "authors": [
+        "Liu, H.",
+        "George, M. G.",
+        "Ge, N.",
+        "Muirhead, D.",
+        "Shrestha, P.",
+        "Lee, J.",
+        "Banerjee, R.",
+        "Zeis, R.",
+        "Messerschmidt, M.",
+        "Scholta, J.",
+        "Krolla, P.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-7",
+      "title": "Multiwall carbon nanotube-based microporous layers for polymer electrolyte membrane fuel cells",
+      "year": 2017,
+      "venue": "J. Electrochem. Soc.",
+      "doi": "10.1149/2.0861712jes",
+      "authors": [
+        "Lee, J.",
+        "Banerjee, R.",
+        "George, M. G.",
+        "Muirhead, D.",
+        "Shrestha, P.",
+        "Liu, H.",
+        "Ge, N.",
+        "Chevalier, S.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-6",
+      "title": "Accelerated Degradation of Polymer Electrolyte Membrane Fuel Cell Gas Diffusion Layers Part 3",
+      "year": 2017,
+      "venue": "J. Electrochem. Soc.",
+      "doi": "10.1149/2.0091707jes",
+      "authors": [
+        "George, M. G.",
+        "Liu, H.",
+        "Muirhead, D.",
+        "Banerjee, R.",
+        "Ge, N.",
+        "Shrestha, P.",
+        "Lee, J.",
+        "Chevalier, S.",
+        "Hinebaugh, J.",
+        "Messerschmidt, M.",
+        "Zeis, R.",
+        "Scholta, J.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-5",
+      "title": "Accelerated Degradation of Polymer Electrolyte Membrane Fuel Cell Gas Diffusion Layers: Part 2",
+      "year": 2017,
+      "venue": "J. Electrochem. Soc.",
+      "doi": "10.1149/2.0081707jes",
+      "authors": [
+        "Liu, H.",
+        "George, M. G.",
+        "Banerjee, R.",
+        "Ge, N.",
+        "Lee, J.",
+        "Muirhead, D.",
+        "Shrestha, P.",
+        "Chevalier, S.",
+        "Hinebaugh, J.",
+        "Zeis, R.",
+        "Messerschmidt, M.",
+        "Scholta, J.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-4",
+      "title": "Novel electrospun gas diffusion layers for polymer electrolyte membrane fuel cells: Part II",
+      "year": 2017,
+      "venue": "J. Power Sources",
+      "doi": "10.1016/j.jpowsour.2017.01.114",
+      "authors": [
+        "Chevalier, S.",
+        "Ge, N.",
+        "Lee, J.",
+        "George, M. G.",
+        "Liu, H.",
+        "Shrestha, P.",
+        "Muirhead, D.",
+        "Lavielle, N.",
+        "Hatton, B. D.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-3",
+      "title": "Transient liquid water distributions in polymer electrolyte membrane fuel cell gas diffusion layers observed through in-operando synchrotron X-ray radiography",
+      "year": 2017,
+      "venue": "J. Electrochem. Soc.",
+      "doi": "10.1149/2.0991702jes",
+      "authors": [
+        "Banerjee, R.",
+        "Ge, N.",
+        "Lee, J.",
+        "George, M. G.",
+        "Chevalier, S.",
+        "Liu, H.",
+        "Shrestha, P.",
+        "Muirhead, D.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-2",
+      "title": "Synchrotron X-ray radiography as a highly precise and accurate method for measuring the spatial distribution of liquid water in operating PEM fuel cells",
+      "year": 2016,
+      "venue": "J. Electrochem. Soc.",
+      "doi": "10.1149/2.0041702jes",
+      "authors": [
+        "Chevalier, S.",
+        "Ge, N.",
+        "George, M. G.",
+        "Lee, J.",
+        "Banerjee, R.",
+        "Liu, H.",
+        "Shrestha, P.",
+        "Muirhead, D.",
+        "Hinebaugh, J.",
+        "Tabuchi, Y.",
+        "Kotaka, T.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "manual-1",
+      "title": "Energy Storage Using Phase Change Materials",
+      "year": 2013,
+      "venue": "The Arbutus Review (Online)",
+      "doi": "10.18357/tar41201312685",
+      "authors": [
+        "Shrestha, P."
+      ],
+      "citations": 0,
+      "url": ""
+    },
+    {
+      "id": "patent-1",
+      "title": "Custom fitted body powered prosthetic upper limb manufactured by 3D printing",
+      "year": 2020,
+      "venue": "US Patent US11013620B2",
+      "doi": null,
+      "authors": [
+        "Shrestha, P.",
+        "Brussow, D.",
+        "Christie, K.",
+        "Peirone, M.",
+        "Richards, M.",
+        "Coutts, J.",
+        "Dechev, N.",
+        "Treble, M.",
+        "Knowlton, R.",
+        "Chan, A."
+      ],
+      "citations": 0,
+      "url": "https://patents.google.com/patent/US11013620B2/en"
+    }
+  ]
+}
