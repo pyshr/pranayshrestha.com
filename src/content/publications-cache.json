@@ -1,6 +1,6 @@
 {
   "fetchedAt": "2026-02-07T00:00:00.000Z",
-  "count": 32,
+  "count": 34,
   "publications": [
     {
       "id": "manual-31",
@@ -611,6 +611,41 @@
       ],
       "citations": 0,
       "url": ""
+    },
+    {
+      "id": "book-2",
+      "title": "Synchrotron X-ray imaging of PEMFCs",
+      "year": 2023,
+      "venue": "Book Chapter in PEM Fuel Cells: Characterization and Modeling",
+      "doi": "10.1515/9783110622720-004",
+      "authors": [
+        "Lee, J. K.",
+        "Shrestha, P.",
+        "Hasan, A. M.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": "https://www.degruyterbrill.com/document/doi/10.1515/9783110622720/html"
+    },
+    {
+      "id": "book-1",
+      "title": "Tailored Electrospun Gas Diffusion Layers with a Graded Pore Structure for Polymer Electrolyte Membrane Fuel Cells",
+      "year": 2023,
+      "venue": "Book Chapter in Album of Porous Media: Structure and Dynamics, Springer",
+      "doi": "10.1007/978-3-031-23800-0_3",
+      "authors": [
+        "Balakrishnan, M.",
+        "Shrestha, P.",
+        "Ge, N.",
+        "Lee, C. H.",
+        "Fahy, K. F.",
+        "Zeis, R.",
+        "Schulz, V. P.",
+        "Hatton, B. D.",
+        "Bazylak, A."
+      ],
+      "citations": 0,
+      "url": "https://link.springer.com/chapter/10.1007/978-3-031-23800-0_3"
     },
     {
       "id": "patent-1",

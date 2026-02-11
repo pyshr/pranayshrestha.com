@@ -26,11 +26,11 @@ export default function ScrollExplorer() {
   const clamp01 = (t: number) => Math.max(0, Math.min(1, t));
   const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-  // Cell image: visible early, fades to invisible as X-ray appears
-  // At progress=-0.2: cell=0.4 (translucent), by progress~0: cell≈0.04 (nearly invisible)
-  const cellFadeT = ease(clamp01((progress + 0.2) / 0.25));
-  const cellOpacity = lerp(0.4, 0, cellFadeT);
-  const cellScale = lerp(0.98, 1, clamp01((progress + 0.2) / 0.2));
+  // Cell image: visible early, zooms in (origin 34% from top) and fades as X-ray appears
+  // Fades faster — mostly gone well before animation is centered (progress=0)
+  const cellFadeT = ease(clamp01((progress + 0.2) / 0.18));
+  const cellOpacity = lerp(0.45, 0, cellFadeT);
+  const cellScale = lerp(1, 1.35, ease(clamp01((progress + 0.2) / 0.22)));
 
   // X-ray: starts fading in from progress=-0.1, full by progress=0.05
   const xrayAppearT = ease(clamp01((progress + 0.1) / 0.15));

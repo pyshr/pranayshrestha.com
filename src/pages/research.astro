@@ -8,9 +8,9 @@ const topics = [
     summary: 'Investigating how pore structure, wettability, and operating conditions govern multiphase transport across length scales in fuel cells, electrolyzers, and batteries.',
     full: 'Porous materials underpin many electrochemical energy technologies, yet transport within them is inherently heterogeneous and difficult to predict. My work investigates how pore structure, wettability, and operating conditions govern multiphase transport across length scales, with a particular focus on fuel cells, electrolyzers, and batteries. By combining experiments and quantitative analysis, I aim to uncover transport mechanisms that directly impact device performance.',
     papers: [
-      { title: 'Formation of Liquid Water Pathways in PEM Fuel Cells', venue: 'J. Electrochem. Soc., 2020' },
-      { title: 'Graded microporous layers for enhanced capillary-driven liquid water removal', venue: 'Adv. Mater. Interfaces, 2019' },
-      { title: 'Hydrophilic microporous layer coatings for PEM fuel cells', venue: 'J. Power Sources, 2018' },
+      { title: 'Formation of Liquid Water Pathways in PEM Fuel Cells', venue: 'J. Electrochem. Soc., 2020', doi: '10.1149/1945-7111/ab7a0b' },
+      { title: 'Graded microporous layers for enhanced capillary-driven liquid water removal', venue: 'Adv. Mater. Interfaces, 2019', doi: '10.1002/admi.201901157' },
+      { title: 'Hydrophilic microporous layer coatings for PEM fuel cells', venue: 'J. Power Sources, 2018', doi: '10.1016/j.jpowsour.2018.08.062' },
     ],
   },
   {
@@ -19,9 +19,9 @@ const topics = [
     summary: 'Developing operando X-ray and neutron tomography to directly visualize structure, transport, and degradation inside working energy devices.',
     full: 'I develop and apply operando X-ray and neutron tomography techniques to directly visualize structure, transport, and degradation inside working energy devices. This includes multimodal and time-resolved imaging under realistic operating conditions, enabled by close collaboration with synchrotron and neutron facilities. These tools provide otherwise inaccessible insight into how devices function internally.',
     papers: [
-      { title: 'Simultaneous multi-material operando tomography of electrochemical devices', venue: 'Sci. Adv., 2023' },
-      { title: 'Quantifying spatiotemporal heterogeneity via operando correlative neutron and X-ray tomography', venue: 'Adv. Funct. Mat., 2025' },
-      { title: 'Synchrotron X-ray radiography for measuring liquid water in PEM fuel cells', venue: 'J. Electrochem. Soc., 2016' },
+      { title: 'Simultaneous multi-material operando tomography of electrochemical devices', venue: 'Sci. Adv., 2023', doi: '10.1126/sciadv.adg8634' },
+      { title: 'Quantifying spatiotemporal heterogeneity via operando correlative neutron and X-ray tomography', venue: 'Adv. Funct. Mat., 2025', doi: '10.1002/adfm.202515427' },
+      { title: 'Synchrotron X-ray radiography for measuring liquid water in PEM fuel cells', venue: 'J. Electrochem. Soc., 2016', doi: '10.1149/2.0041702jes' },
     ],
   },
   {
@@ -30,9 +30,9 @@ const topics = [
     summary: 'Connecting microstructural changes to measurable performance losses and failure modes across batteries, fuel cells, and electrolyzers.',
     full: 'Electrochemical device performance and lifetime are tightly linked to evolving microstructure. My research connects microstructural changes, such as deformation and phase redistribution, to measurable performance losses and failure modes. This structure-to-function perspective enables targeted diagnosis of degradation mechanisms across batteries, fuel cells, and electrolyzers.',
     papers: [
-      { title: 'Effect of microstructure on cycling behaviour of Li-In alloy anodes for solid-state batteries', venue: 'ACS Energy Lett., 2024' },
-      { title: 'Degradation Characteristics of Electrospun Gas Diffusion Layers', venue: 'ACS Appl. Mater. Interfaces, 2021' },
-      { title: 'Microporous layer degradation in PEM fuel cells', venue: 'J. Electrochem. Soc., 2018' },
+      { title: 'Effect of microstructure on cycling behaviour of Li-In alloy anodes for solid-state batteries', venue: 'ACS Energy Lett., 2024', doi: '10.1021/acsenergylett.3c02274' },
+      { title: 'Degradation Characteristics of Electrospun Gas Diffusion Layers', venue: 'ACS Appl. Mater. Interfaces, 2021', doi: '10.1021/acsami.0c15324' },
+      { title: 'Microporous layer degradation in PEM fuel cells', venue: 'J. Electrochem. Soc., 2018', doi: '10.1149/2.0291806jes' },
     ],
   },
   {
@@ -41,9 +41,9 @@ const topics = [
     summary: 'Using experimental data and physical understanding to guide the design of porous layers, electrode architectures, and composite materials.',
     full: 'Insights from operando characterization and transport physics can be translated into improved material architectures. I use experimental data and physical understanding to guide the design of porous layers, electrode architectures, and composite materials for enhanced performance and durability. This work bridges fundamental understanding with practical device-level innovation.',
     papers: [
-      { title: 'Designing catalyst layer morphology for high performance water electrolysis', venue: 'Cell Rep. Phys. Sci., 2023' },
-      { title: 'Designing Tailored Gas Diffusion Layers with Pore Size Gradients via Electrospinning', venue: 'ACS Appl. Energy Mater., 2020' },
-      { title: 'Determining local transport properties via pore network modeling', venue: 'J. Power Sources, 2023' },
+      { title: 'Designing catalyst layer morphology for high performance water electrolysis', venue: 'Cell Rep. Phys. Sci., 2023', doi: '10.1016/j.xcrp.2022.101232' },
+      { title: 'Designing Tailored Gas Diffusion Layers with Pore Size Gradients via Electrospinning', venue: 'ACS Appl. Energy Mater., 2020', doi: '10.1021/acsaem.9b02371' },
+      { title: 'Determining local transport properties via pore network modeling', venue: 'J. Power Sources, 2023', doi: '10.1016/j.jpowsour.2023.232770' },
     ],
   },
 ];
@@ -82,7 +82,12 @@ const topics = [
                     {topic.papers.map((paper) => (
                       <li>
                         <span class="paper-title">{paper.title}</span>
-                        <span class="paper-venue mono">{paper.venue}</span>
+                        <span class="paper-venue mono">
+                          {paper.venue}
+                          {paper.doi && (
+                            <a href={`https://doi.org/${paper.doi}`} class="paper-doi link-underline" target="_blank" rel="noopener noreferrer">DOI &nearr;</a>
+                          )}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -242,6 +247,11 @@ const topics = [
   .paper-venue {
     font-size: var(--text-xs);
     color: var(--color-text-muted);
+  }
+
+  .paper-doi {
+    margin-left: 0.5em;
+    font-size: var(--text-xs);
   }
 
   .card-papers-link {

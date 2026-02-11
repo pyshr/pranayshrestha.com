@@ -60,8 +60,29 @@ const enriched = publications.map((pub: any) => {
   };
 });
 
-const featuredPubs = enriched.filter((p: any) => p.featured);
-const allTags = [...new Set(enriched.flatMap((p: any) => p.tags))].sort();
+// Classify publication type from venue
+function pubType(venue: string): string {
+  const v = (venue || '').toLowerCase();
+  if (v.includes('patent')) return 'patent';
+  if (v.includes('book') || v.includes('chapter')) return 'book';
+  return 'journal';
+}
+
+const enrichedWithType = enriched.map((pub: any) => ({
+  ...pub,
+  pubType: pubType(pub.venue),
+}));
+
+const featuredPubs = enrichedWithType.filter((p: any) => p.featured);
+
+// Collect tag-based filters from enriched data
+const allTags = [...new Set(enrichedWithType.flatMap((p: any) => p.tags))].sort();
+
+// Add type-based filters (patents, books) if any exist
+const extraTypes = ['patent', 'book'].filter(t =>
+  enrichedWithType.some((p: any) => p.pubType === t)
+);
+const extraTypeLabels: Record<string, string> = { patent: 'patents', book: 'books' };
 
 // Bold author name helper
 function boldAuthor(authors: string[]): string {
@@ -119,22 +140,23 @@ function boldAuthor(authors: string[]): string {
     </section>
   )}
 
-  <section class="pub-list-section fade-in">
+  <section class="pub-list-section">
     <div class="container content">
       <h2 class="section-label">All Publications</h2>
 
-      {allTags.length > 0 && (
-        <div class="filter-chips" id="filter-chips">
-          <button class="chip active" data-filter="all">All</button>
-          {allTags.map((tag: string) => (
-            <button class="chip" data-filter={tag}>{tag}</button>
-          ))}
-        </div>
-      )}
+      <div class="filter-chips" id="filter-chips">
+        <button class="chip active" data-filter="all">All</button>
+        {allTags.map((tag: string) => (
+          <button class="chip" data-filter={`tag:${tag}`}>{tag}</button>
+        ))}
+        {extraTypes.map((t: string) => (
+          <button class="chip" data-filter={`type:${t}`}>{extraTypeLabels[t]}</button>
+        ))}
+      </div>
 
       <ol class="pub-list" id="pub-list" reversed>
-        {enriched.map((pub: any, i: number) => (
-          <li class="pub-item" data-tags={JSON.stringify(pub.tags)} data-year={pub.year}>
+        {enrichedWithType.map((pub: any, i: number) => (
+          <li class="pub-item" data-tags={JSON.stringify(pub.tags)} data-type={pub.pubType} data-year={pub.year}>
             <div class="pub-year mono">{pub.year}</div>
             <div class="pub-body">
               <p class="pub-title">{pub.title}</p>
@@ -168,16 +190,22 @@ function boldAuthor(authors: string[]): string {
     chip.addEventListener('click', () => {
       chips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-
-      const filter = chip.getAttribute('data-filter');
+      const filter = chip.getAttribute('data-filter') || 'all';
 
       items.forEach(item => {
         if (filter === 'all') {
           (item as HTMLElement).style.display = '';
           return;
         }
-        const tags = JSON.parse(item.getAttribute('data-tags') || '[]');
-        (item as HTMLElement).style.display = tags.includes(filter) ? '' : 'none';
+        let match = false;
+        if (filter.startsWith('tag:')) {
+          const tag = filter.slice(4);
+          const tags = JSON.parse(item.getAttribute('data-tags') || '[]');
+          match = tags.includes(tag);
+        } else if (filter.startsWith('type:')) {
+          match = item.getAttribute('data-type') === filter.slice(5);
+        }
+        (item as HTMLElement).style.display = match ? '' : 'none';
       });
     });
   });

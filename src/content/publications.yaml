@@ -5,12 +5,12 @@
 
 featured:
   - doi: "10.1126/sciadv.adg8634"
-    note: "First quantitative operando neutron + X-ray tomography of electrochemical devices. Highlighted on Science Advances website."
-    tags: ["tomography", "fuel cells", "methods"]
+    note: "First quantitative operando neutron + X-ray imaging of electrochemical devices. Highlighted on Science Advances website."
+    tags: ["imaging", "fuel cells"]
 
   - doi: "10.1002/adfm.202316438"
     note: "Novel observation of spatiotemporal heterogeneity in fuel cell materials. Journal cover art."
-    tags: ["tomography", "fuel cells"]
+    tags: ["imaging", "fuel cells"]
 
 overrides:
   # Add custom tags or notes to any paper by DOI
@@ -19,19 +19,19 @@ overrides:
     note: "Effect of microstructure on cycling behaviour of Li-In alloy anodes."
 
   - doi: "10.1016/j.electacta.2023.142810"
-    tags: ["review", "methods"]
+    tags: ["review"]
     note: "Invited paper outlining key pillars for advancing next-generation electrochemical energy devices."
 
   - doi: "10.1002/admi.201901157"
-    tags: ["fuel cells", "materials design"]
+    tags: ["fuel cells", "material design"]
     note: "Novel graded microporous layer design for enhanced capillary-driven water removal."
 
   - doi: "10.1149/1945-7111/ab7f17"
-    tags: ["fuel cells", "tomography"]
+    tags: ["fuel cells", "imaging"]
     note: "3D pore-scale insights into liquid water pathway formation in operating fuel cells."
 
   - doi: "10.1016/j.jpowsour.2018.09.049"
-    tags: ["fuel cells", "materials design"]
+    tags: ["fuel cells", "material design"]
     note: "Hydrophilic microporous layer coatings yielding 14% performance improvement."
 
 # Default tags for papers not in overrides (applied by keyword matching)
@@ -40,12 +40,12 @@ tag_rules:
     tag: "fuel cells"
   - match: ["battery", "solid-state", "Li-In", "cathode composite"]
     tag: "batteries"
-  - match: ["tomography", "radiography", "neutron", "X-ray", "synchrotron", "imaging"]
-    tag: "tomography"
+  - match: ["imaging", "radiography", "neutron", "X-ray", "synchrotron", "imaging"]
+    tag: "imaging"
   - match: ["electrolyzer", "electrolysis", "CO2 electro"]
     tag: "electrolyzers"
   - match: ["design", "electrospun", "graded", "biomimetic", "tailoring"]
-    tag: "materials design"
+    tag: "material design"
 
 # Publication stats (updated periodically)
 stats:
